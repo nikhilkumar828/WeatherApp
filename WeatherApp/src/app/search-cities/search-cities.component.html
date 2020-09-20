@@ -1,0 +1,55 @@
+<div class="container-box">
+  <p>Seach for country and city and select to see the weather</p>
+  <p>You can select upto 10 cities at a time</p>
+  <form class="search-bar">
+    <div class="search-control">
+      <input
+        class="form-control form-control-sm ml-3 w-50"
+        [formControl]="countryQuery"
+        type="text"
+        placeholder="Search Country"
+        aria-label="Search"
+        mdbInput
+      />
+      <ng-container *ngIf="countryResult.length">
+        <div
+          class="search-result"
+          *ngFor="let data of countryResult"
+          (click)="countrySelected(data.country)"
+        >
+          {{ data.country }}
+        </div>
+        <div class="divider"></div>
+      </ng-container>
+    </div>
+    <div class="search-control">
+      <input
+        class="form-control form-control-sm ml-3 w-50"
+        [formControl]="cityQuery"
+        type="text"
+        placeholder="Search City"
+        aria-label="Search"
+        mdbInput
+      />
+      <ng-container *ngIf="cityResult.length">
+        <div
+          class="search-result"
+          *ngFor="let data of cityResult"
+          (click)="citySelected(data)"
+        >
+          {{ data.name }}
+        </div>
+      </ng-container>
+    </div>
+  </form>
+
+  <div *ngIf="selectedCities.length">
+    Selected cities are :
+    <ul>
+      <li *ngFor="let city of selectedCities">
+        {{ city.name }}
+      </li>
+    </ul>
+    <button (click)="getWeather()">Get Weather</button>
+  </div>
+</div>
