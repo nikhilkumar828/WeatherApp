@@ -11,7 +11,7 @@
         aria-label="Search"
         mdbInput
       />
-      <ng-container *ngIf="countryResult.length">
+      <div class="list-dropdown" *ngIf="countryResult.length">
         <div
           class="search-result"
           *ngFor="let data of countryResult"
@@ -20,7 +20,7 @@
           {{ data.country }}
         </div>
         <div class="divider"></div>
-      </ng-container>
+      </div>
     </div>
     <div class="search-control">
       <input
@@ -31,7 +31,7 @@
         aria-label="Search"
         mdbInput
       />
-      <ng-container *ngIf="cityResult.length">
+      <div class="list-dropdown" *ngIf="cityResult.length">
         <div
           class="search-result"
           *ngFor="let data of cityResult"
@@ -39,11 +39,11 @@
         >
           {{ data.name }}
         </div>
-      </ng-container>
+      </div>
     </div>
   </form>
 
-  <div *ngIf="selectedCities.length">
+  <div class="selected-cities" *ngIf="selectedCities.length">
     Selected cities are :
     <ul>
       <li *ngFor="let city of selectedCities">
